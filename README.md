@@ -1,6 +1,6 @@
 # simple_edge_videostream
 
-Simple setup to stream webcam videos behind router/double NAT  via http,rtsp ot rtp for newbies
+Simple setup to stream webcam videos behind router/double NAT  via http,rtsp ot rtp for newbies.
 
 Useful for real time video application for newbies with minimal network hasseles
 
@@ -14,13 +14,12 @@ or Have camera connected to raspberry pi.
 
  cvlc v4l2:// :v4l2-vdev="/dev/video0" --sout '#transcode{vcodec=x264{keyint=60,idrint=2},vcodec=h264,vb=400,width=368,heigh=208,acodec=mp4a,ab=32 ,channels=2,samplerate=22100}:duplicate{dst=std{access=http{mime=video/x-ms-wmv},mux=asf,dst=:8080/stream.wmv}}' --no-sout-audio
 
-rtsp streaming
-cvlc  v4l2:// :v4l2-vdev="/dev/video0" --sout '#es{access=file,mux=ps,url_audio=audio-%c.%m,url_video=video-%c.%m}' 
  
 2.Tunnelling behind router
 
-Usually done by portforwarding .Issues if router is provided private ip by ISP(double NAT)
-VNC is an option.But again issues with portforwading needed some time
+Usually done by portforwarding in router.
+Issues if router is provided private ip by ISP(double NAT).
+VNC is an option.But again issues with portforwading and some router configuration and instabilities in packet transmissions.
 
 For quick setup can try to install ngrok https://ngrok.com/ and use simple configuration
  ngrok <protocol> <port>
@@ -28,7 +27,7 @@ For quick setup can try to install ngrok https://ngrok.com/ and use simple confi
   ngrok http 8080
   
   it gives a link that can be accessed behind any network 
-  ex  http://a3b4-2406-7400-63-c8ef-7581-c1f2-270b-a889.ngrok.io -> http://localhost:8080
+  ex  http://<xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx-xxxx.ngrok.io -> http://localhost:8080
    
 3.Enable ports for communication in Linux
  
